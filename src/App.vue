@@ -1,9 +1,9 @@
 <template>
 <div id="app">
 	<!-- This part only displays if the user is authenticated -->
-	<div v-if="isAuthenticated">
+	<div class="auth-log" v-if="isAuthenticated">
 		<h2>{{userInfo.username}}</h2>
-		<button to="/profile">Profile</button>
+		<!-- <button to="/profile">Profile</button> -->
 		<button @click="logout">Signout</button>
 	</div>
 	<!-- The login option shows if the user is not authenticated -->
@@ -72,7 +72,8 @@ export default {
 				this.text = ''
 			}).catch(() => {
 				self.logout();
-			});
+			})
+			this.$router.push('/profile').catch(()=>{})
 		},
 
 		logout() {
@@ -94,9 +95,7 @@ export default {
 #app {
 	display: flex;
 	flex-direction: column;
-	// width: 1280px;
 	max-width: 1140px;
-	// max-height: 100vh;
 	height: 100%;
 	margin:  auto;
 }
@@ -126,25 +125,25 @@ form {
 		text-transform: uppercase;
 	}
 		
-	button {
-		margin-top: 35px;
-		background-color: rgba(255,74,86,1);
-		border: 1px solid rgba(255,74,86,1);
-		line-height: 0;
-		font-size: 17px;
-		display: inline-block;
-		box-sizing: border-box;
-		padding: 20px 15px; 
-		border-radius: 60px;
-		color: #fff;
-		font-weight: 100;
+	// button {
+	// 	margin-top: 35px;
+	// 	background-color: rgba(255,74,86,1);
+	// 	border: 1px solid rgba(255,74,86,1);
+	// 	line-height: 0;
+	// 	font-size: 17px;
+	// 	display: inline-block;
+	// 	box-sizing: border-box;
+	// 	padding: 20px 15px; 
+	// 	border-radius: 60px;
+	// 	color: #fff;
+	// 	font-weight: 100;
 		
-		&:hover, &:focus {
-			color: white;
-			background-color: rgb(231, 65, 76);
-			transition: background-color .2s;
-		}
-	}
+	// 	&:hover, &:focus {
+	// 		color: white;
+	// 		background-color: rgb(231, 65, 76);
+	// 		transition: background-color .2s;
+	// 	}
+	// }
 
 	input {		
 		position: relative;
@@ -174,11 +173,41 @@ form {
 				
 	}
 }
-
 button {
-	margin: 30px;
-	padding: 30px;
-	background-color: #c2c2c2;
+		margin-top: 35px;
+		background-color: rgba(255,74,86,1);
+		border: 1px solid rgba(255,74,86,1);
+		line-height: 0;
+		font-size: 17px;
+		display: inline-block;
+		box-sizing: border-box;
+		padding: 20px 15px; 
+		border-radius: 60px;
+		color: #fff;
+		font-weight: 100;
+		
+		&:hover, &:focus {
+			color: white;
+			background-color: rgb(231, 65, 76);
+			transition: background-color .2s;
+		}
+	}
+
+// button {
+// 	margin: 30px;
+// 	padding: 30px;
+// 	background-color: #c2c2c2;
+// }
+
+.auth-log {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+	h2 {
+		font-size: 40px;
+		text-transform: uppercase;
+	}
 }
 
 .router {

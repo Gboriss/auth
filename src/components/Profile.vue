@@ -1,14 +1,12 @@
 <template>
-<div>
+<div class="container">
 	<ul v-if="isAuthenticated">
 		<li v-for="repo in repos" :key="repo.id">
-			<!-- <img :src=" require('../assets/${repo.owner.avatar_url}') "> -->
-			<!-- <img :src=" require('../assets/' + repo.owner.avatar_url) "> -->
 			<h2>{{ repo.owner.login }} / {{ repo.name }}</h2>
-			<div>{{ repo.stargazers_count }}</div>
+			<div><span>&#9733;</span>{{ repo.stargazers_count }}</div>
 		</li>
 	</ul>
-    <div v-else>
+    <div class="submit-error" v-else>
 		<h1>Error!</h1>
 		<p>
 			Please log in to see your profile
@@ -52,6 +50,40 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.container {
+    display: flex;
+    flex-direction: column;
+	max-width: 1140px;
+	height: 100%;
+	margin:  auto;
+}
+
+.submit-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 auto;
+    li {
+        margin-bottom: 20px;
+        div {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+span {
+    color: rgb(255, 217, 0);
+    font-size: 25px;
+    margin-right: 10px;
+}
 
 </style>
